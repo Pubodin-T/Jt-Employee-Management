@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <title>Constra - Construction Html5 Template</title>
+
+  <!-- Mobile Specific Metas -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Construction Html5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Constra HTML Template v1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/logoj&t.png">
+
+  <!-- CSS -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
+  <!-- Animation -->
+  <link rel="stylesheet" href="plugins/animate-css/animate.css">
+  <!-- slick Carousel -->
+  <link rel="stylesheet" href="plugins/slick/slick.css">
+  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
+  <!-- Colorbox -->
+  <link rel="stylesheet" href="plugins/colorbox/colorbox.css">
+  <!-- Template styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    body {
+        background-image: url('images/slider-main/j&t555.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+    }
+    #banner-area {
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 50px 0;
+        text-align: center;
+        color: #fff;
+        position: relative;
+    }
+    .banner1-heading {
+        text-align: center; /* จัดข้อความให้อยู่ตรงกลาง */
+        margin-top: 150px; /* ปรับระยะห่างจากด้านบน */
+        margin-bottom: 50px; /* ปรับระยะห่างที่ด้านล่าง */
+    }
+    .banner1-title {
+        font-size: 4rem; /* ขนาดฟอนต์ที่ใหญ่ขึ้น */
+        color: #ffffff; /* สีข้อความเป็นขาว */
+        line-height: 1.2; /* ความสูงของบรรทัด */
+    }
+    .login-container {
+        background-color: rgba(255, 255, 255, 0.9); /* สีพื้นหลังขาวจาง */
+        padding: 40px; /* เพิ่มการเว้นวรรคภายในกล่อง */
+        border-radius: 8px;
+        color: #333;
+        max-width: 500px; /* ขยายขนาดสูงสุดของกล่อง */
+        margin: 0 auto;
+        margin-top: 20px; /* เพิ่มช่องว่างจากด้านบน */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #dee2e6;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group input {
+        width: 100%;
+        padding: 12px; /* เพิ่มการเว้นวรรคภายในกล่องข้อความ */
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        font-size: 18px; /* ขยายขนาดฟอนต์ของช่องข้อความ */
+    }
+    .form-group button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 15px; /* เพิ่มการเว้นวรรคภายในปุ่ม */
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 18px; /* ขยายขนาดฟอนต์ของปุ่ม */
+        transition: background-color 0.3s ease;
+    }
+    .form-group button:hover {
+        background-color: #218838;
+    }
+  </style>
+
+  <!-- SweetAlert CDN -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+  <div class="body-inner">
+
+    <!-- Top Bar -->
+    <div id="top-bar" class="top-bar">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-8">
+            <ul class="top-info text-center text-md-left">
+              <li><i class="fas fa-map-marker-alt"></i> <p class="info-text">Phon Krang, Nakhon Ratchasima 30000</p></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-4 top-social text-center text-md-right">
+            <ul class="list-unstyled">
+              <li>
+                <a title="Facebook" href="https://www.facebook.com/profile.php?id=100076107837478">
+                  <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banner Area -->
+    <div id="banner-area" class="banner-area">
+      <div class="banner-text">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="banner1-heading">
+                <h1 class="banner1-title">Login</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="login-container">
+      <form action="login.php" method="post">
+        <div class="form-group">
+          <input type="text" id="username" name="username" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" name="password" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Javascript Files -->
+    <script src="plugins/jQuery/jquery.min.js"></script>
+    <script src="plugins/bootstrap/bootstrap.min.js" defer></script>
+    <script src="plugins/slick/slick.min.js"></script>
+    <script src="plugins/slick/slick-animation.min.js"></script>
+    <script src="plugins/colorbox/jquery.colorbox.js"></script>
+    <script src="plugins/shuffle/shuffle.min.js" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
+    <script src="plugins/google-map/map.js" defer></script>
+    <script src="js/script.js"></script>
+
+    <!-- Script to handle errors -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+
+        if (error === 'invalid_credentials') {
+          swal({
+            title: "เกิดข้อผิดพลาด",
+            text: "Username หรือ Password ไม่ถูกต้อง ลองใหม่อีกครั้ง",
+            icon: "warning"
+          });
+        } else if (error === 'account_inactive') {
+          swal({
+            title: "เกิดข้อผิดพลาด",
+            text: "บัญชีของคุณไม่สามารถเข้าสู่ระบบได้ กรุณาติดต่อผู้ดูแลระบบ",
+            icon: "warning"
+          });
+        } else if (error === 'server_error') {
+          swal({
+            title: "เกิดข้อผิดพลาด",
+            text: "เกิดข้อผิดพลาดจากเซิร์ฟเวอร์ กรุณาลองใหม่อีกครั้งภายหลัง",
+            icon: "error"
+          });
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>

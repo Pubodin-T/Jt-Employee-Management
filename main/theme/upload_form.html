@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>อัปโหลดรูปภาพ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>อัปโหลดรูปภาพ</h1>
+    <form action="upload_photo.php" method="post" enctype="multipart/form-data">
+      <label for="employee_photo">เลือกไฟล์รูปภาพ:</label>
+      <input type="file" name="employee_photo" id="employee_photo" accept="image/*" required>
+      <input type="submit" value="อัปโหลดรูปภาพ">
+    </form>
+  </div>
+</body>
+</html>

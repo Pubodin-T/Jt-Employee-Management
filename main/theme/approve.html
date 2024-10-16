@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>อนุมัติการลา</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-image: url('images/slider-main/j&t17.jpg');
+      background-size: cover; /* ปรับขนาดภาพให้ครอบคลุมทั้งหน้า */
+      background-position: center; /* จัดภาพให้อยู่ตรงกลาง */
+      background-repeat: no-repeat; /* ป้องกันไม่ให้ภาพซ้ำ */
+      background-attachment: fixed; /* ทำให้ภาพเลื่อนตามเมื่อหน้าเว็บเลื่อน */
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .card {
+      border: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .card-header {
+      background-color: #262626;
+      color: white;
+      font-size: 1.25rem;
+      border-bottom: 1px solid #ff0707;
+    }
+    .table thead th {
+      background-color: #303030;
+      color: white;
+    }
+    .btn-approve {
+      background-color: #28a745;
+      color: white;
+      border: none;
+    }
+    .btn-approve:hover {
+      background-color: #218838;
+    }
+    .btn-reject {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+    }
+    .btn-reject:hover {
+      background-color: #c82333;
+    }
+    .reason-container {
+      display: none;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header text-center">
+        <h1>อนุมัติการลา</h1>
+      </div>
+      <div class="card-body">
+        <div id="employee-info" class="mb-4">
+          <p><strong>ชื่อ-นามสกุล:</strong> <span id="employee-name"></span></p>
+          <p><strong>ตำแหน่ง:</strong> <span id="employee-position"></span></p>
+        </div>
+
+        <!-- ตารางการลา -->
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>วันที่เริ่มต้น</th>
+              <th>วันที่สิ้นสุด</th>
+              <th>ประเภทการลา</th>
+              <th>เหตุผล</th>
+              <th>สถานะ</th>
+              <th>การกระทำ</th>
+            </tr>
+          </thead>
+          <tbody id="leave-requests">
+            <!-- รายการการลาจะแสดงที่นี่ -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- กล่องป้อนเหตุผล -->
+  <div id="reason-container" class="reason-container">
+    <label for="reason-input">เหตุผล:</label>
+    <textarea id="reason-input" rows="4" cols="50"></textarea>
+    <button onclick="submitReject()" class="btn btn-primary mt-2">ยืนยัน</button>
+    <button onclick="cancelReject()" class="btn btn-secondary mt-2">ยกเลิก</button>
+  </div>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="approve.js"></script> <!-- ลิงก์ไปยังไฟล์ JavaScript ของคุณ -->
+  
+
+</body>
+</html>
