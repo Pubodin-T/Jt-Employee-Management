@@ -55,11 +55,12 @@
             cursor: pointer;
             font-size: 16px; 
             transition: background-color 0.3s; 
-            width: 48%; /* ขยายความกว้างปุ่มให้เท่ากัน */
+            width: 120px; /* ขยายความกว้างปุ่มให้เท่ากัน */
             display: inline-block; /* ทำให้ปุ่มอยู่ในบรรทัดเดียวกัน */
             margin: 5px 1%; /* เพิ่มระยะห่างระหว่างปุ่ม */
             text-align: center; /* จัดข้อความในปุ่มให้กลาง */
             font-family: 'Kanit', sans-serif; /* ใช้ฟอนต์ Kanit */
+            text-decoration:none;
         }
         button:hover, .back-button:hover {
             background-color: #45a049; 
