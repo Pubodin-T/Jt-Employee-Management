@@ -45,7 +45,7 @@ if ($mysqli->affected_rows) {
         if (!$mail->send()) {
             echo "Mailer Error: " . $mail->ErrorInfo;
         } else {
-            echo "Message sent, please check your inbox.";
+            echo "ส่งข้อความแล้ว กรุณาเช็คอีเมลของคุณ.";
         }
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer error: {$mail->ErrorInfo}";
