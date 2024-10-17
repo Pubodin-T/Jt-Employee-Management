@@ -214,7 +214,28 @@ $result = $stmt->get_result();
         .error {
             color: red;
         }
-        
+        h1 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-weight: 500 !important;
+    font-family: 'Kanit', sans-serif; /* กำหนดฟอนต์เป็น Kanit */
+        }
+        h2 {
+    color: #ffffff;
+    font-weight: 500 !important;
+    font-family: "Montserrat", sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased !important;
+    font-family: 'Kanit', sans-serif; /* กำหนดฟอนต์เป็น Kanit */
+        }
+        .employee-info strong {
+    color: #000000;
+    font-weight: 500 !important;
+    font-family: 'Kanit', sans-serif; /* กำหนดฟอนต์เป็น Kanit */
+}
+
+
     </style>
 </head>
 <body>

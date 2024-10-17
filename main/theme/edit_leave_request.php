@@ -33,13 +33,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $update_query = "UPDATE leave_requests SET start_date = '$start_date', end_date = '$end_date', leave_type_id = '$leave_type_id', reason = '$reason' WHERE leave_requests_id = '$leave_request_id'";
 
     if ($conn->query($update_query) === TRUE) {
-        echo "อัปเดตข้อมูลสำเร็จ!";
-        header("Location: status.php");
+        echo "<script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'อัปเดตข้อมูลสำเร็จ!',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(function() {
+                    window.location.href = 'status.php';
+                });
+              </script>";
     } else {
-        echo "เกิดข้อผิดพลาดในการอัปเดต: " . $conn->error;
+        echo "<script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'เกิดข้อผิดพลาด!',
+                    text: 'เกิดข้อผิดพลาดในการอัปเดต: " . $conn->error . "',
+                });
+              </script>";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -47,6 +62,60 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>แก้ไขใบคำขอลา</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      
+      background: url('images/slider-main/j&t22.jpg') no-repeat center center/cover;
+      margin-left: 150px; /* Leave space for the sidebar */
+            padding: 60px;
+            width: calc(100% - 250px); /* Adjust the width to account for the sidebar */
+            color: #fff; /* สีของข้อความใน Main Content */
+    }
+    .container {
+      margin-top: 50px;
+      max-width: 600px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 24px;
+      color: #333;
+    }
+    .form-group label {
+      font-weight: bold;
+    }
+    button {
+      width: 100%;
+    }
+    .btn-primary {
+      color: #fff;
+      background-color: #ff0018;
+      border-color: #e5b7bb;
+    }
+    .btn-primary:hover {
+      background-color: #e60014;
+      border-color: #d4a7af;
+    }
+    textarea {
+      resize: none;
+    }
+    .btn-secondary {
+    color: #fff;
+    background-color: #000000d9;
+    border-color: #6c757d;
+}
+* {
+  font-family: 'Kanit', sans-serif;
+}
+
+  </style>
 </head>
 <body>
   <div class="container">
@@ -76,10 +145,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       </div>
       <div class="form-group">
         <label>เหตุผลการลา</label>
-        <textarea name="reason" class="form-control" required><?php echo $leave_request['reason']; ?></textarea>
+        <textarea name="reason" class="form-control" rows="4" required><?php echo $leave_request['reason']; ?></textarea>
       </div>
       <button type="submit" class="btn btn-primary">บันทึกการแก้ไข</button>
     </form>
+     <!-- ปุ่มย้อนกลับ -->
+     <button class="btn btn-secondary" onclick="window.history.back();">ยกเลิกการแก้ไข</button>
+  </div>
   </div>
 </body>
 </html>

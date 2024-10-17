@@ -46,9 +46,9 @@ if (!$result) {
         }
         h1 {
             text-align: center;
-            color: #292929;
+            color: #ffffff;
             margin-top: 20px;
-            font-weight: 600;
+            font-weight: 500;
         }
         
         table {
@@ -221,7 +221,9 @@ if (!$result) {
             ?>
         </tbody>
     </table>
-
+    <div style="text-align: center; margin: 20px;">
+        <a href="admin_dashboard.php" class="styled-button">ย้อนกลับ</a>
+    </div>
 </body>
 </html>
 
