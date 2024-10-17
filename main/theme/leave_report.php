@@ -24,7 +24,7 @@ $query = "SELECT
 
           FROM 
             employee e
-          RIGHT JOIN 
+          LEFT JOIN 
             leave_requests lr ON e.employee_id = lr.employee_id
           GROUP BY 
             e.employee_id";
