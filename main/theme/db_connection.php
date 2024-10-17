@@ -8,13 +8,13 @@ $user = 'root';
 $pass = '';
 
 // Create a new mysqli connection
-$mysqli = new mysqli($host, $user, $pass, $db);
+$conn = new mysqli($host, $user, $pass, $db);
 
 // Check for connection errors
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
-return $mysqli; // Return the mysqli object if the connection is successful
+return $conn; // Return the mysqli object if the connection is successful
 ?>
 
