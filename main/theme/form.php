@@ -167,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           alert('วันลาของคุณไม่เพียงพอ');
             window.location.href = 'history.php';
             </script>";
-            exit(); // Make sure to use exit() to stop the script execution after the redirect
+            exit(); // Make sure to use exit() to stop the script execution after the redirect อสวกาหวก
         }
 
 
