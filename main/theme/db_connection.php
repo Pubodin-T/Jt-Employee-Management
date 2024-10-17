@@ -1,15 +1,20 @@
 <?php
-$servername = "localhost"; // หรือที่อยู่ของเซิร์ฟเวอร์ฐานข้อมูล
-$username = "root"; // ชื่อผู้ใช้ฐานข้อมูล
-$password = ""; // รหัสผ่านฐานข้อมูล
-$dbname = "companyx"; // ชื่อฐานข้อมูล
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-// สร้างการเชื่อมต่อ
-$conn = new mysqli($servername, $username, $password, $dbname);
+$host = 'localhost';
+$db = 'companyx'; // Ensure this database exists
+$user = 'root';
+$pass = '';
 
-// ตรวจสอบการเชื่อมต่อ
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Create a new mysqli connection
+$mysqli = new mysqli($host, $user, $pass, $db);
+
+// Check for connection errors
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
 }
-//echo "connected successfully";
+
+return $mysqli; // Return the mysqli object if the connection is successful
 ?>
+

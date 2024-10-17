@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2024 at 04:48 AM
+-- Generation Time: Oct 17, 2024 at 08:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -113,7 +113,8 @@ INSERT INTO `account` (`account_id`, `username`, `password`, `role`, `created_at
 (72, '11248', '12345', 1, '2024-10-14 13:02:01', 1),
 (73, '151515', '151515', 1, '2024-10-14 21:03:39', 1),
 (74, '819071T37', '819071T37', 1, '2024-10-15 21:17:24', 1),
-(75, '812485455', '812485455', 1, '2024-10-16 04:29:11', 1);
+(75, '812485455', '812485455', 1, '2024-10-16 04:29:11', 1),
+(76, 'oatxshot555', '12345', 1, '2024-10-17 04:15:59', 1);
 
 -- --------------------------------------------------------
 
@@ -139,6 +140,8 @@ CREATE TABLE `employee` (
   `contact` text DEFAULT NULL,
   `account_id` int(11) DEFAULT NULL,
   `status` enum('1','0') DEFAULT '1',
+  `reset_token` varchar(64) DEFAULT NULL,
+  `reset_token_expiry` varchar(64) DEFAULT NULL,
   `vacation_days_accumulated` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -146,35 +149,36 @@ CREATE TABLE `employee` (
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`employee_id`, `employee_name`, `employee_position`, `employee_age`, `employee_dob`, `employee_phone`, `employee_email`, `photo_path`, `vacation_days_taken`, `sick_leave_remaining`, `personal_leave_remaining`, `vacation_leave_remaining`, `special_leave_remaining`, `role`, `contact`, `account_id`, `status`, `vacation_days_accumulated`) VALUES
-('09876555', 'Nattapong Chaiyachak', 'วิ่งงาน', 22, '2001-05-15', '09443433', 'asdsa@das.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 43, '1', 0),
-('1111111', 'Pranee ninchmnan', 'วิ่งงาน', 26, '1997-02-23', '0923267447', 'Pranee11248@gmail.com', '263b03a8ec8b34ea74b20e42dea0b0b7-cutout.png', 6, 30, 3, 6, 5, '1', NULL, 18, '1', 0),
-('11248', 'wanisa ninchmnan', 'วิ่งงาน', 24, '2000-09-14', '951134871', 'wanisa@gmail.com', 'uploads/IMG_670d169a0f6601.45271672.jpg', 0, 30, 3, 6, 5, '1', NULL, 72, '1', 0),
-('12154521', 'Kritsada Srisai', 'พาร์ทไทม์', 24, '2000-06-16', '0958452311', 'narank112@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 19, '1', 0),
-('123321', 'tayakon tapalad', 'พาร์ทไทม์', 22, '2002-03-11', '9443433', 'tapalad15@das.com', NULL, 0, 26, 3, 5, 5, '1', NULL, 71, '1', 0),
-('15123124', 'yamapee hahaha', 'วิ่งงาน', 24, '2000-10-05', '0953264411', 'yamapee@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 23, '1', 0),
-('151515', 'Wichai Wongwong', 'พาร์ทไทม์', 24, '2000-06-15', '931317471', 'Wichai@gmail.com', 'uploads/IMG_670d8753c67c10.34381328.jpg', 0, 30, 3, 6, 5, '1', NULL, 73, '1', 0),
-('212187521', 'Sankeaw Ninchmnan', 'วิ่งงาน', 24, '2000-09-18', '0611051569', 'Sankeaw11248@gmail.com', 'uploads/IMG_6707e00f1a1c24.57797985.png', 6, 30, 3, 6, 5, '1', NULL, 1, '1', 0),
-('5555556677255', 'Pimchanok Phaithoon', 'วิ่งงาน', 22, '2004-09-24', '9443433', 'tapalad15@das.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 70, '1', 0),
-('56231241', 'yanisa eiei', 'พาร์ทไทม์', 24, '2000-06-16', '04121213', 'yanisa112@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 22, '1', 0),
-('812485455', 'wannicha hahaha', 'วิ่งงาน', 20, '2006-02-16', '953264411', 'wannicha@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 75, '1', 0),
-('819071006', 'Siriwat Puangsuk', 'หัวหน้าบ้านเกาะ', 24, '0000-00-00', '0923267447', 'Siriwat@gmail.com', 'icon.jpg', 0, 30, 3, 6, 5, '1', NULL, 2, '1', 0),
-('819071020', 'Wudthiphad Wiriyasahwangkul', 'เจ้าของกิจการ', 30, '1990-08-30', '0952564811', 'wudthiphad@gmail.com', NULL, 0, 30, 3, 6, 5, 'เจ้าของกิจการ', NULL, 3, '1', 0),
-('819071021', 'Sonphet Phakdee', 'วิ่งงาน', 25, '1990-05-21', '0215742431', 'sonphet@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 4, '1', 0),
-('819071023', 'Saphat Woraphap', 'ผู้จัดการ', 25, '1999-04-23', '0956231251', 'Saphat@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 5, '1', 0),
-('819071028', 'Jakkree Prajuabklang', 'หัวหน้าบ้านบุ', 30, '1993-05-10', '0123456789', 'jakkree@example.com', 'icon.jpg', 0, 30, 3, 6, 5, '1', NULL, 6, '1', 0),
-('819071T000002', 'Sutthikan Thaenphakwaen', 'วิ่งงาน', 25, '1999-06-12', '0623157812', 'Sutthikan@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 7, '1', 0),
-('819071T000003', 'Kittamat Phonthong', 'วิ่งงาน', 25, '1999-07-13', '0654218712', 'Kittamat@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 8, '1', 0),
-('819071T000006', 'Peerapan Sudtiwhong', 'วิ่งงาน', 25, '1990-07-25', '0952312471', 'Peerapan@gamil.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 9, '1', 0),
-('819071T000010', 'Mongkhonchai Buasing', 'วิ่งงาน', 26, '1998-08-01', '0952326715', 'Mongkhonchai@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 10, '1', 0),
-('819071T000014', 'Rattaphol Tiwongsa', 'วิ่งงาน', 26, '1998-07-03', '0545121247', 'Rattahol@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 11, '1', 0),
-('819071T000015', 'Noontawat Thaokrathok', 'รองหัวหน้าบ้านเกาะ', 28, '1996-05-01', '0923234151', 'Noontawat@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 12, '1', 0),
-('819071T000018', 'Oatthakon Aintharaphon', 'วิ่งงาน', 30, '1990-02-02', '0263587411', 'Oatthakan@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 13, '1', 0),
-('819071T000019', 'Suppaset Suwanprapak', 'วิ่งงาน', 28, '1996-07-01', '0923231271', 'Suppaset@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 14, '1', 0),
-('819071T000020', 'Bancha Chanjaroen', 'วิ่งงาน', 30, '1990-08-30', '0953231871', 'Bancha@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 15, '1', 0),
-('819071T000024', 'Jennarong Thabsang', 'วิ่งงาน', 34, '1986-08-30', '0656232712', 'Jennarong@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 16, '1', 0),
-('819071T37', 'yanisa namjai', 'พาร์ทไทม์', 24, '2000-09-16', '953231571', 'yanisa11248@gmail.com', NULL, 0, 26, 1, 2, 3, '1', NULL, 74, '1', 0),
-('admin', 'admin', '', 28, '1996-05-25', '0561262311', NULL, NULL, 0, 26, 3, 6, 5, '2', NULL, 17, '1', 0);
+INSERT INTO `employee` (`employee_id`, `employee_name`, `employee_position`, `employee_age`, `employee_dob`, `employee_phone`, `employee_email`, `photo_path`, `vacation_days_taken`, `sick_leave_remaining`, `personal_leave_remaining`, `vacation_leave_remaining`, `special_leave_remaining`, `role`, `contact`, `account_id`, `status`, `reset_token`, `reset_token_expiry`, `vacation_days_accumulated`) VALUES
+('09876555', 'Nattapong Chaiyachak', 'วิ่งงาน', 22, '2001-05-15', '09443433', 'asdsa@das.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 43, '1', NULL, NULL, 0),
+('1111111', 'Pranee ninchmnan', 'วิ่งงาน', 26, '1997-02-23', '0923267447', 'Pranee11248@gmail.com', '263b03a8ec8b34ea74b20e42dea0b0b7-cutout.png', 6, 30, 3, 6, 5, '1', NULL, 18, '1', NULL, NULL, 0),
+('11248', 'wanisa ninchmnan', 'วิ่งงาน', 24, '2000-09-14', '951134871', 'wanisa@gmail.com', 'uploads/IMG_670d169a0f6601.45271672.jpg', 0, 30, 3, 6, 5, '1', NULL, 72, '1', NULL, NULL, 0),
+('12154521', 'Kritsada Srisai', 'พาร์ทไทม์', 24, '2000-06-16', '0958452311', 'narank112@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 19, '1', NULL, NULL, 0),
+('123321', 'tayakon tapalad', 'พาร์ทไทม์', 22, '2002-03-11', '9443433', 'tapalad15@das.com', NULL, 0, 26, 3, 5, 5, '1', NULL, 71, '1', NULL, NULL, 0),
+('13392', 'Pubodin', 'วิ่งงาน', 24, '2000-07-28', '912368969', 'oatxshot555@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 76, '1', '5be91a596e17af019eaf1e15a71612a0c6868c87205b19178d24df5457e0f567', '2024-10-17 09:01:11', 0),
+('15123124', 'yamapee hahaha', 'วิ่งงาน', 24, '2000-10-05', '0953264411', 'yamapee@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 23, '1', NULL, NULL, 0),
+('151515', 'Wichai Wongwong', 'พาร์ทไทม์', 24, '2000-06-15', '931317471', 'Wichai@gmail.com', 'uploads/IMG_670d8753c67c10.34381328.jpg', 0, 30, 3, 6, 5, '1', NULL, 73, '1', NULL, NULL, 0),
+('212187521', 'Sankeaw Ninchmnan', 'วิ่งงาน', 24, '2000-09-18', '0611051569', 'Sankeaw11248@gmail.com', 'uploads/IMG_6707e00f1a1c24.57797985.png', 6, 30, 3, 6, 5, '1', NULL, 1, '1', NULL, NULL, 0),
+('5555556677255', 'Pimchanok Phaithoon', 'วิ่งงาน', 22, '2004-09-24', '9443433', 'tapalad15@das.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 70, '1', NULL, NULL, 0),
+('56231241', 'yanisa eiei', 'พาร์ทไทม์', 24, '2000-06-16', '04121213', 'yanisa112@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 22, '1', NULL, NULL, 0),
+('812485455', 'wannicha hahaha', 'วิ่งงาน', 20, '2006-02-16', '953264411', 'wannicha@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 75, '1', NULL, NULL, 0),
+('819071006', 'Siriwat Puangsuk', 'หัวหน้าบ้านเกาะ', 24, '0000-00-00', '0923267447', 'Siriwat@gmail.com', 'icon.jpg', 0, 30, 3, 6, 5, '1', NULL, 2, '1', NULL, NULL, 0),
+('819071020', 'Wudthiphad Wiriyasahwangkul', 'เจ้าของกิจการ', 30, '1990-08-30', '0952564811', 'wudthiphad@gmail.com', NULL, 0, 30, 3, 6, 5, 'เจ้าของกิจการ', NULL, 3, '1', NULL, NULL, 0),
+('819071021', 'Sonphet Phakdee', 'วิ่งงาน', 25, '1990-05-21', '0215742431', 'sonphet@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 4, '1', NULL, NULL, 0),
+('819071023', 'Saphat Woraphap', 'ผู้จัดการ', 25, '1999-04-23', '0956231251', 'Saphat@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 5, '1', NULL, NULL, 0),
+('819071028', 'Jakkree Prajuabklang', 'หัวหน้าบ้านบุ', 30, '1993-05-10', '0123456789', 'jakkree@example.com', 'icon.jpg', 0, 30, 3, 6, 5, '1', NULL, 6, '1', NULL, NULL, 0),
+('819071T000002', 'Sutthikan Thaenphakwaen', 'วิ่งงาน', 25, '1999-06-12', '0623157812', 'Sutthikan@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 7, '1', NULL, NULL, 0),
+('819071T000003', 'Kittamat Phonthong', 'วิ่งงาน', 25, '1999-07-13', '0654218712', 'Kittamat@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 8, '1', NULL, NULL, 0),
+('819071T000006', 'Peerapan Sudtiwhong', 'วิ่งงาน', 25, '1990-07-25', '0952312471', 'Peerapan@gamil.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 9, '1', NULL, NULL, 0),
+('819071T000010', 'Mongkhonchai Buasing', 'วิ่งงาน', 26, '1998-08-01', '0952326715', 'Mongkhonchai@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 10, '1', NULL, NULL, 0),
+('819071T000014', 'Rattaphol Tiwongsa', 'วิ่งงาน', 26, '1998-07-03', '0545121247', 'Rattahol@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 11, '1', NULL, NULL, 0),
+('819071T000015', 'Noontawat Thaokrathok', 'รองหัวหน้าบ้านเกาะ', 28, '1996-05-01', '0923234151', 'Noontawat@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 12, '1', NULL, NULL, 0),
+('819071T000018', 'Oatthakon Aintharaphon', 'วิ่งงาน', 30, '1990-02-02', '0263587411', 'Oatthakan@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 13, '1', NULL, NULL, 0),
+('819071T000019', 'Suppaset Suwanprapak', 'วิ่งงาน', 28, '1996-07-01', '0923231271', 'Suppaset@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 14, '1', NULL, NULL, 0),
+('819071T000020', 'Bancha Chanjaroen', 'วิ่งงาน', 30, '1990-08-30', '0953231871', 'Bancha@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 15, '1', NULL, NULL, 0),
+('819071T000024', 'Jennarong Thabsang', 'วิ่งงาน', 34, '1986-08-30', '0656232712', 'Jennarong@gmail.com', NULL, 0, 30, 3, 6, 5, '1', NULL, 16, '1', NULL, NULL, 0),
+('819071T37', 'yanisa namjai', 'พาร์ทไทม์', 24, '2000-09-16', '953231571', 'yanisa11248@gmail.com', NULL, 0, 26, 1, 2, 3, '1', NULL, 74, '1', NULL, NULL, 0),
+('admin', 'admin', '', 28, '1996-05-25', '0561262311', NULL, NULL, 0, 26, 3, 6, 5, '2', NULL, 17, '1', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -467,7 +471,7 @@ ALTER TABLE `leave_types`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `leave_approvals`

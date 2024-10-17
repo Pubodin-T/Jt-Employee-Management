@@ -60,6 +60,7 @@
     .login-container {
         background-color: rgba(255, 255, 255, 0.9); /* สีพื้นหลังขาวจาง */
         padding: 40px; /* เพิ่มการเว้นวรรคภายในกล่อง */
+        padding-bottom: 25px;
         border-radius: 8px;
         color: #333;
         max-width: 500px; /* ขยายขนาดสูงสุดของกล่อง */
@@ -70,6 +71,9 @@
     }
     .form-group {
         margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+
     }
     .form-group input {
         width: 100%;
@@ -79,6 +83,8 @@
         font-size: 18px; /* ขยายขนาดฟอนต์ของช่องข้อความ */
     }
     .form-group button {
+        display: flex;
+        justify-content: space-between;
         background-color: #28a745;
         color: white;
         border: none;
@@ -90,6 +96,10 @@
     }
     .form-group button:hover {
         background-color: #218838;
+    }
+    .forgot-password-link {
+    text-align: right;
+    margin-top: 15px; /* Adjust margin as needed */
     }
   </style>
 
@@ -147,6 +157,12 @@
         </div>
         <div class="form-group">
           <button type="submit">Login</button>
+          <div class="forgot-password-link">
+            <a href="forgot_password.php">Forgot Password?</a>
+          </div>
+        </div>
+        <div>
+          
         </div>
       </form>
     </div>
