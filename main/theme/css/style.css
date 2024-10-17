@@ -28,7 +28,7 @@ body {
 
 body,
 p {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Kanit', sans-serif; /* กำหนดฟอนต์เป็น Kanit */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased !important;
   line-height: 26px;
@@ -827,8 +827,8 @@ ul.top-info-box li .info-box .info-box-subtitle {
   margin: 0;
   line-height: normal;
   font-size: 15px;
-  font-weight: 700;
-  color: #111;
+  /* font-weight: 700; */
+  color: #ff0000;
 }
 
 /*-- Search start --*/
@@ -850,7 +850,7 @@ ul.top-info-box > li.nav-search:before {
 }
 
 ul.top-info-box > li.nav-search i {
-  font-size: 20px;
+  font-size: 30px;
   top: 10px;
   position: relative;
   cursor: pointer;
@@ -954,10 +954,10 @@ ul.navbar-nav > li > a:after {
 }
 
 ul.navbar-nav > li > a {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Kanit', sans-serif;
   color: #fff !important;
   text-rendering: optimizeLegibility;
-  font-weight: 700 !important;
+  font-weight: 500 !important;
   text-transform: uppercase;
   letter-spacing: -0.2px;
   font-size: 14px;

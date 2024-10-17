@@ -188,45 +188,55 @@ $conn->close();
   <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    body {
+  body {
       background-image: url('images/slider-main/j&t555.jpg');
       background-size: cover; 
       background-position: center; 
       background-repeat: no-repeat; 
       background-attachment: fixed; 
-    }
-    .employee-form-container {
+      font-family: 'Kanit', sans-serif;   
+  }
+
+  .employee-form-container {
       max-width: 600px;
       margin: 0 auto;
       padding: 20px;
       border: 1px solid #ccc;
       border-radius: 10px;
       background-color: #f9f9f9;
-    }
-    .employee-form-container h1 {
+  }
+
+  .employee-form-container h1 {
       text-align: center;
       margin-bottom: 20px;
       color: #000000;
-    }
-    .employee-form-container .form-group {
+      font-weight: 500 !important;
+      font-family: 'Kanit', sans-serif;
+  }
+
+  .employee-form-container .form-group {
       margin-bottom: 15px;
-    }
-    .employee-form-container label {
+  }
+
+  .employee-form-container label {
       display: block;
-      font-weight: bold;
+      font-weight: 500 !important;
       margin-bottom: 5px;
-    }
-    .employee-form-container input,
-    .employee-form-container select,
-    .employee-form-container textarea {
+  }
+
+  .employee-form-container input,
+  .employee-form-container select,
+  .employee-form-container textarea {
       width: 100%;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
       box-sizing: border-box;
-    }
-    .employee-form-container .btn {
+  }
+
+  .employee-form-container .btn {
       background-color: #28a745;
       color: #ffffff;
       border: none;
@@ -234,17 +244,40 @@ $conn->close();
       border-radius: 5px;
       cursor: pointer;
       font-size: 16px;
-    }
-    .employee-form-container .btn:hover {
+  }
+
+  .employee-form-container .btn:hover {
       background-color: #218838;
-    }
-    .footer {
+  }
+
+  .btn-cancel {
+      background-color: #dc3545;
+      color: #ffffff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+  }
+
+  .btn-cancel:hover {
+      background-color: #c82333;
+  }
+
+  .button-container {
+      display: flex;
+      justify-content: space-between; /* จัดให้ปุ่มอยู่ห่างกัน */
+      margin-top: 20px;
+  }
+
+  .footer {
       text-align: center;
       margin-top: 20px;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
+
 <div class="employee-form-container">
     <h1>แบบฟอร์มการลา</h1>
     <form method="POST" enctype="multipart/form-data">
@@ -267,22 +300,28 @@ $conn->close();
         </div>
         <div class="form-group">
             <label for="reason">เหตุผลการลา:</label>
-            <textarea name="reason" id="reason" rows="4" ></textarea>
+            <textarea name="reason" id="reason" rows="4"></textarea>
         </div>
         <div class="form-group">
             <label for="contact">ข้อมูลการติดต่อ(กรอกหมายเลขโทรศัพท์):</label>
-            <input type="text" name="contact" id="contact" >
+            <input type="text" name="contact" id="contact">
         </div>
         <div class="form-group">
             <label for="certificate">ไฟล์ใบรับรองแพทย์ (ถ้ามี):</label>
             <input type="file" name="certificate" id="certificate" accept=".jpg,.jpeg,.png,.pdf">
         </div>
-        <button type="submit" class="btn">ส่งคำขอ</button>
+
+        <div class="button-container">
+            <button type="submit" class="btn">ส่งคำขอ</button>
+            <a href="employee.php" class="btn-cancel">ย้อนกลับ</a>
+        </div>
     </form>
+
     <div class="footer">
         <p>© 2024 J&T Express</p>
     </div>
 </div>
+
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>

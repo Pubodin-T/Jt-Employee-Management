@@ -60,35 +60,64 @@ if ($result === false) {
   <link rel="stylesheet" href="plugins/fontawesome/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.4/dist/sweetalert2.min.css">
+  </head>
 
   <style>
     body {
-      background-image: url('images/slider-main/j&t555.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
+        background-image: url('images/slider-main/j&t555.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
     .container {
-      margin-top: 50px;
+        margin-top: 50px;
     }
     .card {
-      border: none;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
     }
     .card-header {
-      background-color: #970000;
-      color: white;
-      font-size: 1.25rem;
-      border-bottom: 1px solid #ff0707;
-      font-family: 'Kanit', sans-serif;
+        background-color: #970000;
+        color: white;
+        font-size: 1.25rem;
+        border-bottom: 1px solid #ff0707;
+        font-family: 'Kanit', sans-serif;
     }
     .table thead th {
-      background-color: #b50314;
-      color: white;
+        background-color: #b50314;
+        color: white;
     }
-  </style>
+    .button-container {
+        display: flex;
+        justify-content: flex-end; /* จัดให้ปุ่มอยู่ทางขวา */
+        margin-top: 20px; /* เพิ่มช่องว่างด้านบน */
+    }
+    .btn-back {
+        display: inline-flex;
+        align-items: center;
+        background-color: #313131;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    .btn-back:hover {
+        background-color: #5a6268;
+        transform: translateX(-5px); /* เคลื่อนที่ไปทางซ้าย */
+    }
+    .btn-back i {
+        margin-right: 8px;
+        transition: transform 0.3s ease;
+    }
+    .btn-back:hover i {
+        transform: translateX(-5px); /* เคลื่อนที่ไอคอนไปทางซ้าย */
+    }
+</style>
+
 </head>
 <body>
   <div class="container">
@@ -107,58 +136,81 @@ if ($result === false) {
               <th>ประเภทการลา</th>
               <th>เหตุผล</th>
               <th>สถานะ</th>
-              
             </tr>
           </thead>
           <tbody>
             <?php
-           if ($result->num_rows > 0) {
-            $counter = 1; // เริ่มนับจาก 1
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>{$counter}</td>"; // แสดงเลขลำดับ
-                echo "<td>{$row['format_start_date']}</td>";
-                echo "<td>{$row['format_end_date']}</td>";
-                echo "<td>{$row['format_submit_date']}</td>";
-                echo "<td>{$row['leave_type_name']}</td>";
-                echo "<td>{$row['reason']}</td>";
-        
-                // เช็คสถานะของคำขอ
-                if ($row['status'] == '0') { // รออนุมัติ
-                    echo '<td>
-                            <button class="btn btn-info"><i class="fas fa-spinner fa-spin"></i> รออนุมัติ</button>
-                            <a href="edit_leave_request.php?id=' . $row['leave_requests_id'] . '" class="btn btn-warning">
-                                <i class="fas fa-edit"></i> แก้ไข
-                            </a>
-                            <a href="cancel_leave_request.php?id=' . $row['leave_requests_id'] . '" 
-                                class="btn btn-danger" 
-                                onclick="return confirm(\'คุณต้องการยกเลิกคำขอนี้ใช่หรือไม่?\')">
-                                <i class="fas fa-times"></i> ยกเลิก
-                            </a>
-                          </td>';
-                } elseif ($row['status'] == '1') { // อนุมัติ
-                    echo '<td><button class="btn btn-success"><i class="fas fa-check"></i> อนุมัติ</button></td>';
-                } elseif ($row['status'] == '2') { // ไม่อนุมัติ
-                    echo '<td><button class="btn btn-danger"><i class="fas fa-times"></i> ไม่อนุมัติ</button></td>';
+            if ($result->num_rows > 0) {
+                $counter = 1; // เริ่มนับจาก 1
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>{$counter}</td>"; // แสดงเลขลำดับ
+                    echo "<td>{$row['format_start_date']}</td>";
+                    echo "<td>{$row['format_end_date']}</td>";
+                    echo "<td>{$row['format_submit_date']}</td>";
+                    echo "<td>{$row['leave_type_name']}</td>";
+                    echo "<td>{$row['reason']}</td>";
+
+                    // เช็คสถานะของคำขอ
+                    if ($row['status'] == '0') { // รออนุมัติ
+                        echo '<td>
+                                <button class="btn btn-info"><i class="fas fa-spinner fa-spin"></i> รออนุมัติ</button>
+                                <a href="edit_leave_request.php?id=' . $row['leave_requests_id'] . '" class="btn btn-warning">
+                                    <i class="fas fa-edit"></i> แก้ไข
+                                </a>
+                                <a href="cancel_leave_request.php?id=' . $row['leave_requests_id'] . '" 
+                                    class="btn btn-danger" 
+                                    onclick="return confirm(\'คุณต้องการยกเลิกคำขอนี้ใช่หรือไม่?\')">
+                                    <i class="fas fa-times"></i> ยกเลิก
+                                </a>
+                              </td>';
+                    } elseif ($row['status'] == '1') { // อนุมัติ
+                        echo '<td><button class="btn btn-success"><i class="fas fa-check"></i> อนุมัติ</button></td>';
+                    } elseif ($row['status'] == '2') { // ไม่อนุมัติ
+                        echo '<td><button class="btn btn-danger"><i class="fas fa-times"></i> ไม่อนุมัติ</button></td>';
+                    }
+
+                    echo "</tr>";
+                    $counter++; // เพิ่มเลขลำดับในแต่ละรอบ
                 }
-        
-                echo "</tr>";
-                $counter++; // เพิ่มเลขลำดับในแต่ละรอบ
+            } else {
+                echo "<tr><td colspan='7' class='no-data'>ไม่มีข้อมูลการลา</td></tr>";
             }
-        } else {
-            echo "<tr><td colspan='8' class='no-data'>ไม่มีข้อมูลการลา</td></tr>";
-        }
-        
             ?>
           </tbody>
         </table>
+        <div class="button-container">
+            <a href="history.php" class="btn-back">
+                <i class="fas fa-arrow-left"></i> ย้อนกลับ
+            </a>
+        </div>
       </div>
     </div>
   </div>
-
+  <script>
+    function cancelLeaveRequest(leaveRequestId) {
+      Swal.fire({
+        title: 'คุณแน่ใจหรือไม่?',
+        text: "คุณต้องการยกเลิกคำขอนี้ใช่หรือไม่?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'ใช่, ยกเลิกเลย!',
+        cancelButtonText: 'ไม่, กลับไป',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // ถ้าผู้ใช้ยืนยัน ให้เปลี่ยนไปยังหน้าที่ต้องการเพื่อยกเลิกคำขอ
+          window.location.href = 'cancel_leave_request.php?id=' + leaveRequestId;
+        }
+      });
+    }
+  </script>
   <!-- JavaScript Libraries -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.4/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>

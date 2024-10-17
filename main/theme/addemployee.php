@@ -71,11 +71,16 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             background-color: #ffffff;
-            border: 2px solid #007bff;
+            border: 2px solid #000000;
         }
         h1 {
             text-align: center;
-            font-weight: 700;
+            font-weight: 300;
+            font-family: 'Kanit', sans-serif;
+           
+           color: #000000;
+           margin: 20px 0;
+
         }
         label {
             display: block;
