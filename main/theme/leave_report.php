@@ -134,19 +134,21 @@ $result = mysqli_query($conn, $query);
     </style>
 </head>
 <body>
-<div class="sidebar">
-        <h2>เมนูผู้ดูแล</h2>
-        <a href="admin_dashboard.php">หน้าหลัก</a>
-        <a href="employee_list.php">ข้อมูลพนักงาน</a>
-        <a href="approve_leave.php">จัดการการลาพนักงาน</a>
-        <a href="addemployee.php">ลงทะเบียนพนักงานใหม่</a>
-        <a href="leave_history.php">ประวัติการลาพนักงาน</a>
-        <a href="certificate.php">ประวัติใบรับรองแพทย์</a>
-        <a href="reset_leave.php">รีเซ็ตวันลาพักร้อน</a>
-        <a href="leave_report.php">ยอดวันใช้ไป-คงเหลือพนักงาน</a>
-        <a href="leave_report_employee.php">สถิติการลา</a>
-        <a href="logout.php">ออกจากระบบ</a>
-    </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Sidebar -->
+    <div class="sidebar">
+    <h2>ผู้ดูแลระบบ</h2>
+    <a href="admin_dashboard.php"><i class="fas fa-home"></i> หน้าหลัก</a>
+    <a href="employee_list.php"><i class="fas fa-users"></i> ข้อมูลพนักงาน</a>
+    <a href="approve_leave.php"><i class="fas fa-check-circle"></i> จัดการการลาพนักงาน</a>
+    <a href="addemployee.php"><i class="fas fa-user-plus"></i> ลงทะเบียนพนักงานใหม่</a>
+    <a href="leave_history.php"><i class="fas fa-history"></i> ประวัติการลาพนักงาน</a>
+    <a href="certificate.php"><i class="fas fa-file-medical"></i> ประวัติใบรับรองแพทย์</a>
+    <a href="reset_leave.php"><i class="fas fa-refresh"></i> รีเซ็ตวันลาพักร้อน</a>
+    <a href="leave_report.php"><i class="fas fa-chart-bar"></i> ยอดวันใช้ไป-คงเหลือพนักงาน</a>
+    <a href="leave_report_employee.php"><i class="fas fa-chart-pie"></i> สถิติการลา</a>
+    <a href="logout.php"><i class="fas fa-sign-out-alt"></i> ออกจากระบบ</a>
+</div>
 
     <div class="content">
         <h3>รายงานวันลาที่ใช้ไปของพนักงาน</h3>
