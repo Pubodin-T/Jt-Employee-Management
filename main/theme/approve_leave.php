@@ -106,7 +106,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// ดึงข้อมูลคำขอการลาที่รออนุมัติ
+// ตรวจสอบว่ามีการค้นหาหรือไม่
+$search = isset($_GET['search']) ? $conn->real_escape_string($_GET['search']) : '';
+
+$search_condition = "";
+if (!empty($search)) {
+    $search_condition = "AND (e.employee_name LIKE '%$search%' OR lt.leave_type_name LIKE '%$search%')";
+}
+
+// ดึงข้อมูลคำขอการลาที่รออนุมัติพร้อมเงื่อนไขการค้นหา
 $query = "SELECT lr.*, e.employee_name, e.vacation_days_taken, lt.leave_type_name, lt.leave_type_id, 
                  DATE_FORMAT(lr.start_date, '%d/%m/%y') as format_start_date,
                  DATE_FORMAT(lr.end_date, '%d/%m/%y') as format_end_date,
@@ -119,7 +127,7 @@ $query = "SELECT lr.*, e.employee_name, e.vacation_days_taken, lt.leave_type_nam
           FROM leave_requests lr
           JOIN employee e ON lr.employee_id = e.employee_id
           JOIN leave_types lt ON lr.leave_type_id = lt.leave_type_id
-          WHERE lr.status = '0' ORDER BY lr.leave_requests_id ASC";
+          WHERE lr.status = '0' $search_condition ORDER BY lr.leave_requests_id ASC";
 $result = $conn->query($query);
 
 // ตรวจสอบว่าการ query สำเร็จหรือไม่
@@ -205,6 +213,23 @@ $conn->close();
       display: none; /* ซ่อนกล่องเหตุผลเริ่มต้น */
       margin-top: 10px;
     }
+    .form-inline {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: 5px;
+    }
+    .card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    padding-top: 8px;
+    }
+
   </style>
 </head>
 <body>
@@ -266,6 +291,12 @@ $conn->close();
       <div class="card-header text-center">
         <h1>อนุมัติการลา</h1>
       </div>
+      <div class="container mt-4">
+  <form method="get" action="approve_leave.php" class="form-inline mb-3">
+    <input type="text" name="search" class="form-control mr-2" placeholder="ค้นหาชื่อพนักงานหรือประเภทการลา" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+    <button type="submit" class="btn btn-primary">ค้นหา</button>
+  </form>
+</div>
       <div class="card-body">
         <!-- ตารางการแสดงคำขอการลา -->
         <table class="table">

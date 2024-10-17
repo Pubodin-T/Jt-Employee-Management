@@ -10,7 +10,7 @@ if (!isset($_SESSION['employee_id'])) {
 
 // ตรวจสอบการดึง employee_id จาก session
 $employee_id = $_SESSION['employee_id'];
-echo "Employee ID: " . $employee_id . "<br>"; // เพิ่มการแสดง employee_id เพื่อตรวจสอบว่า session มีค่า
+//echo "Employee ID: " . $employee_id . "<br>"; // เพิ่มการแสดง employee_id เพื่อตรวจสอบว่า session มีค่า
 
 // ตรวจสอบบทบาทของผู้ใช้
 $query = "SELECT role FROM employee WHERE employee_id = '$employee_id'";
@@ -22,7 +22,7 @@ if ($result === false || $result->num_rows == 0) {
 
 $row = $result->fetch_assoc();
 $role = $row['role'];
-echo "Role: " . $role . "<br>"; // แสดง role เพื่อตรวจสอบสิทธิ์
+//echo "Role: " . $role . "<br>"; // แสดง role เพื่อตรวจสอบสิทธิ์
 
 // ดึงข้อมูลประวัติการลาที่รออนุมัติหรืออนุมัติ
 $query = "SELECT lr.*, e.employee_name, lt.leave_type_name,
